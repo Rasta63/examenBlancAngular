@@ -1,0 +1,72 @@
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center bg-primary">Ajout d'une paire de chaussure</h1>
+            <form #chaussureForm="ngForm" (ngSubmit)="onSubmit()" class="form-group">
+                <div class="form-group row">
+                    <label for="nom" class="col-sm-2 col-form-label">Nom </label>
+                    <div class="col-sm-10">
+                        <input type="text" required name="nom" id="nom" class="form-control"
+                            [(ngModel)]="chaussure.nom" #nom="ngModel" placeholder="nom de la chaussure">
+                        <div [hidden]="nom.valid" class="alert alert-danger">Le nom est requis</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="offset-sm-2 col-md-10">
+                        <label class="col-sm-label col-sm-2 pt-0">Marque : </label>
+                        <div >
+                            <input type="radio" class="marque" required name="marque" id="adidas" [(ngModel)]="chaussure.marque"
+                                #marque="ngModel" value="Adidas">
+                            <label for="adidas" class="from-check-label">
+                                Adidas
+                            </label>
+                        </div>
+                        <div>
+                        <input type="radio" class="marque" name="marque" id="pumas" [(ngModel)]="chaussure.marque" #marque="ngModel"
+                            value="Pumas">
+                        <label for="pumas" class="from-check-label">
+                            Pumas
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" class="marque" name="marque" id="nike" [(ngModel)]="chaussure.marque" #marque="ngModel"
+                            value="Nike">
+                        <label for="nike">
+                            Nike
+                        </label>
+                    </div>
+                        <div [hidden]="marque.valid" class="alert alert-danger">La marque est requis</div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="taille" class="col-sm-2 col-form-label">Taille </label>
+                    <div class="col-sm-10">
+                        <input type="number" required name="taille" id="taille" class="form-control"
+                            [(ngModel)]="chaussure.taille" #taille="ngModel" placeholder="taille de la chaussure">
+                        <div [hidden]="taille.valid" class="alert alert-danger">Le taille est requis</div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="type" class="col-sm-2 col-form-label">Type :</label>
+                    <div class="col-sm-10">
+                        <select required name="type" id="type" class="form-control" [(ngModel)]="chaussure.type"
+                            #type="ngModel">
+                            <option selected>--Choisir--</option>
+                            <option *ngFor="let typ of types" value="{{typ}}">{{typ}}</option>
+                        </select>
+                        <div [hidden]="type.valid" class="alert alert-danger">Le type est requis</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto m-auto">
+                        <input type="submit" id="submitBtn" [disabled]="!chaussureForm.valid" value="Envoyer"
+                            class="btn btn-primary form-control">
+                    </div>
+                </div>
+            </form>
+            <a routerLink="/chaussures"><button class="btn btn-danger">Back</button></a>
+        </div>
+    </div>
+</div>

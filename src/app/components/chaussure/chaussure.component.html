@@ -1,0 +1,41 @@
+<h1 class="text-center bg-primary text-light">Gestion du stock de chaussures</h1>
+<a class="text-center" id="addChaussure" routerLink="/chaussure/ajout">
+    <button class="btn btn-primary from-control">
+        Ajouter chaussures
+    </button>
+</a>
+<h2>Liste des chaussures presents dans votre stock</h2>
+<p>Actuelement il y a {{nbChaussure}} chaussure(s)</p>
+<ng-container *ngIf="!isLoading">
+    <table class="table table-striped  mt-2">
+        <thead class="bg-secondary">
+            <tr>
+               <th>Id</th>
+                <th>Nom</th>
+                <th>Action</th> 
+            </tr>
+        </thead>
+        <tbody class="table-warning">
+            
+               <tr *ngFor="let chaussure of chaussures" class="chaussureLine">
+                
+               <td>{{chaussure.id}}</td>
+                <td><a [routerLink]="['/chaussures/',chaussure.id]">{{chaussure.nom}}</a></td>
+            
+                <td>
+                    <a class="align-middle" [routerLink]="['/chaussure/edit/',chaussure.id]">
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                    </a>
+                    <a class="retirerChaussure" style="color: red; cursor: pointer;"
+                        (click)="retirerChaussure(chaussure)">
+                        <fa-icon class="ml-3" [icon]="faTrash"></fa-icon>
+                    </a>
+                </td>
+            </tr>
+       
+        </tbody>
+    </table>
+</ng-container>
+<ng-container *ngIf="isLoading">
+    <fa-icon [spin]="true" [icon]="faCog"></fa-icon>
+</ng-container>

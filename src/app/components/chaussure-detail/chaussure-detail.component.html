@@ -1,0 +1,32 @@
+<ng-container *ngIf="!isLoading">
+    <div class="row">
+        <div class="offset-sm-2 col-sm-8">
+            <div class="card border-primary mb-3" style="max-width: 27rem;">
+                <div class="card-header bg-primary border-success">
+                    <h1>Details chaussure n°{{chaussure.id}}</h1>
+                </div>
+                <div class="card-body text-info ">
+                    <h2 class="card-title">{{chaussure.name}}</h2>
+                    <div class="card-text text-center">
+                        <p>
+                            {{chaussure.marque}} <br>
+                            {{chaussure.type}} <br>
+                            {{chaussure.sport}} <br>
+                            {{chaussure.taille}} <br>
+                            {{chaussure.dateEntreStock | date :"dd/MM/yyyy"}}
+                        </p>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-success text-center">
+                    <a [routerLink]="['/chaussure/edit/',chaussure.id]" class="btn btn-primary">Modifier</a>
+                    <button class="btn btn-danger ml-5 "(click)="retirerChaussure(chaussure)">
+                        Supprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="isLoading">
+    <fa-icon [spin]="true" [icon]="faCog"></fa-icon>
+</ng-container>

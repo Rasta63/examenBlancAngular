@@ -1,0 +1,28 @@
+{
+  "chaussure": [
+    {
+      "id": 1,
+      "nom": "f50",
+      "marque": "Adidas",
+      "type": "Ville",
+      "taille": 43,
+      "dateEntreStock": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "id": 4,
+      "nom": "R-max",
+      "marque": "nike",
+      "type": "ville",
+      "dateEntreStock": "2020-02-18T09:11:30.570Z",
+      "taille": 36
+    },
+    {
+      "id": 5,
+      "nom": "pumas 5",
+      "marque": "pumas",
+      "type": "sport",
+      "dateEntreStock": "2020-02-18T09:12:03.882Z",
+      "taille": 17
+    }
+  ]
+}
